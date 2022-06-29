@@ -1,4 +1,4 @@
-﻿;v1.3
+﻿;v1.4
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 #InstallKeybdHook
 ; #Warn  ; Enable warnings to assist with detecting common errors.
@@ -12,10 +12,8 @@ if (master_mute = "Off") {
     Menu, Tray, Icon, Icons/microphone-slash-solid-color.ico, , 1
 }
 
-micColor := MicColor.New()
-micColor.update(master_mute)
-
-return
+Global micColor := New MicColor(master_mute)
+;return
 
 ^!`:: ;ctrl+alt+` ;<s> Shift Pause Break button is my chosen hotkey </s>
 SoundSet, +1, MASTER, mute, 5 ;5 was my mic id number use the code below the dotted line to find your mic id. you need to replace all 5's  <---------IMPORTANT
@@ -32,8 +30,13 @@ if (master_mute = "Off") {
     SoundPlay, Sounds/mute.wav
     Menu, Tray, Icon, Icons/microphone-slash-solid-color.ico, , 1
 }
+
+
+
 ;ToolTip, Mute %master_mute% ;use a tool tip at mouse pointer to show what state mic is after toggle
 SetTimer, RemoveToolTip, 1000
+
+;MsgBox, , , %  "mute is: " master_mute " "
 micColor.update(master_mute)
 
 return
@@ -43,38 +46,51 @@ RemoveToolTip:
     ToolTip
 return
 
+
 class MicColor
 {
     httpCookie := ""
-    httpCookieExpire := ""
+    httpCookieExpire := 0
     
-    New()
+    __New(master_mute)
     {
-        this.login()
+        ;MsgBox, , , % this.httpCookieExpire  "   "
+
+        this.update(master_mute)
         
-        MsgBox, , , % this.httpCookieExpire "   " ;TimeFormat(this.httpCookieExpire, "yyyy-dd-MM HH:mm:ss")
+        ;MsgBox, , , % this.httpCookieExpire "   " ; TimeFormat(this.httpCookieExpire, "yyyy-dd-MM HH:mm:ss")
     }
     
     update(master_mute)
     {
-        micColor := #FFFFFF
+        ;MsgBox, , , % "called"
+        miconColor  := #FFFFFFFF
         if (master_mute = "Off") {
-            micColor := "#FF00FF00"
+            miconColor := "#FF00FF00"
         } else {
-            micColor := "#FFFF0000"
+            miconColor := "#FFFF0000"
         }
         
+        FormatTime, CurrentDate, %A_Now%
+        EnvAdd, CurrentDate, 0, Seconds
+        EnvSub, CurrentDate, 19700101, Seconds
         
-        
-        
-        try {
-            ; logRes := this.login()
-        } catch e {
-            return
+        if (CurrentDate >= this.httpCookieExpire) {
+            ;MsgBox, , , % "login & send"
+            ;MsgBox, , , % "before login" this.httpCookie
+            this.login()
+            ;MsgBox, , , % "after login" this.httpCookie
+            ;MsgBox, , , % "before send" this.httpCookie
+            this.send(miconColor)
+            ;MsgBox, , , % "after send" this.httpCookie
+        } else {
+            ;MsgBox, , , % "send"
+            ;MsgBox, , , % "before send" this.httpCookie
+            this.send(miconColor)
+            ;MsgBox, , , % "after send" this.httpCookie
         }
         
-        ; res2 := this.sendMicColorUpdate(micColor, httpCookie)
-        
+
         return
     }
     
@@ -95,27 +111,11 @@ class MicColor
             oHTTP.Send(PostData)
             this.httpCookie := oHTTP.GetResponseHeader("Set-Cookie: ", cookie)
             
-            
-            ;FormatTime, CurrentDate, %A_NowUTC%,, yyyyMMddHHmmss ;GMT 00:00
-            Now := %A_Now%
-            FormatTime, CurrentDate, Now ;, %A_NowUTC%             TomorrowsDate := CurrentDate
-            EnvAdd, CurrentDate, 0, Seconds
-            EnvSub, CurrentDate, 19700101, Seconds
-
-            FormatTime, TomorrowsDate, Now
+            FormatTime, TomorrowsDate, %A_Now%
             EnvAdd, TomorrowsDate, 0, Seconds
             EnvAdd, TomorrowsDate, 1, Days
             EnvSub, TomorrowsDate, 19700101, Seconds
-            
-            ; EnvAdd, CurrentDate, 4, Hours ;GMT +04:00
-            ;MsgBox, % CurrentDate " " TomorrowsDate
-            
-            currentEpoch := EnvSub, A_NowUTC, 1970, seconds
             this.httpCookieExpire := TomorrowsDate
-            
-            ; DateParse(StrDelLeft(StrSplit(this.httpCookie, ";")[2], 9))
-            ; MsgBox, , % oHTTP2.status, % this.httpCookie
-            ; MsgBox, , % oHTTP2.status, % this.httpCookieExpire
         } catch e {
             MsgBox, , "error"
             return
@@ -125,58 +125,28 @@ class MicColor
     }
     
     
-    send(micColor, httpCookie)
+    send(miconColor)
     {
-        
-        
-        URL2 := "http://192.168.1.57:8080/editor/updatewidget/276/settings"
-        PostData2 := "settings={widgetpref_inactivecolor: """ micColor """}"
-        
+        URL2 := "http://192.168.1.57:8080/editor/updatewidget/276/settings" ;276 ;
+        PostData2 := "settings={widgetpref_inactivecolor: """ miconColor """}"
+        ;M19,11C19,12.19 18.66,13.3 18.1,14.28L16.87,13.05C17.14,12.43 17.3,11.74 17.3,11H19M15,11.16L9,5.18V5A3,3 0 0,1 12,2A3,3 0 0,1 15,5V11L15,11.16M4.27,3L21,19.73L19.73,21L15.54,16.81C14.77,17.27 13.91,17.58 13,17.72V21H11V17.72C7.72,17.23 5,14.41 5,11H6.7C6.7,14 9.24,16.1 12,16.1C12.81,16.1 13.6,15.91 14.31,15.58L12.65,13.92L12,14A3,3 0 0,1 9,11V10.28L3,4.27L4.27,3Z
         oHTTP2 := ComObjCreate("WinHttp.WinHttpRequest.5.1")
         ;oHTTP2.SetProxy(2, "localhost:63025") ; debugging purpose
         oHTTP2.Open("POST", URL2, False)
         oHTTP2.SetRequestHeader("User-Agent", "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)")
         oHTTP2.SetRequestHeader("Referer", URL2)
         oHTTP2.SetRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+        oHTTP2.SetRequestHeader("cookie", this.httpCookie)
         
-        oHTTP2.SetRequestHeader("cookie", httpCookie)
-        
-        oHTTP2.Send(PostData2)
-        ;  MsgBox, , , % oHTTP2.GetLastError()
-        ; MsgBox, , % oHTTP2.status, % httpCookie
-        Gui, Add, Edit, w800 r10, % oHTTP2.GetAllResponseHeaders() httpCookie
-        gui, show
-        return oHTTP2
+        try {
+            oHTTP2.Send(PostData2)
+        } catch e {
+            MsgBox, , "error2"
+            return
+        }
+
+        return
     }
 }
 
-TimeFormat(timestamp, format)
-{
-    ;yyyy-dd-MM HH:mm:ss
-    FormatTime, formatted, timestamp, % format
-    return formatted
-}
 
-StrDelLeft(str, charCount)
-{
-    StringTrimLeft, output, str, charCount
-    return output
-}
-
-DateParse(str)
-{
-    static e2 = "i)(?:(\d{1, 2}+)[\s\.\-\/, ]+)?(\d{1, 2}|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\w*)[\s\.\-\/, ]+(\d{2, 4})"
-    str := RegExReplace(str, "((?:" . SubStr(e2, 42, 47) . ")\w*)(\s*)(\d{1, 2})\b", "$3$2$1", "", 1)
-    if RegExMatch(str, "i)^\s*(?:(\d{4})([\s\-:\/])(\d{1, 2})\2(\d{1, 2}))?"
-    . "(?:\s*[T\s](\d{1, 2})([\s\-:\/])(\d{1, 2})(?:\6(\d{1, 2})\s*(?:(Z)|(\+|\-)?"
-    . "(\d{1, 2})\6(\d{1, 2})(?:\6(\d{1, 2}))?)?)?)?\s*$", i)
-    d3 := i1, d2 := i3, d1 := i4, t1 := i5, t2 := i7, t3 := i8
-    Else If !RegExMatch(str, "^\W*(\d{1, 2}+)(\d{2})\W*$", t)
-    RegExMatch(str, "i)(\d{1, 2})\s*:\s*(\d{1, 2})(?:\s*(\d{1, 2}))?(?:\s*([ap]m))?", t)
-    , RegExMatch(str, e2, d)
-    f = %A_FormatFloat%
-    SetFormat, Float, 02.0
-    d := (d3 ? (StrLen(d3) = 2 ? 20 : "") . d3 : A_YYYY)((d2 := d2 + 0 ? d2 : (InStr(e2, SubStr(d2, 1, 3)) - 40) // 4 + 1.0) > 0 ? d2 + 0.0 : A_MM)((d1 += 0.0) ? d1 : A_DD) . t1 + (t1 = 12 ? t4 = "am" ? -12.0 : 0.0 : t4 = "am" ? 0.0 : 12.0) t2 + 0.0 . t3 + 0.0
-    SetFormat, Float, % f
-    Return, d
-}
