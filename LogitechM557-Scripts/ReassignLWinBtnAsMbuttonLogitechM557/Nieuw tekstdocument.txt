@@ -1,0 +1,4 @@
+5B  15B	 	d	11.03	LWin           	
+5B  15B	 	u	0.17	LWin           	
+5B  15B	 	d	0.64	LWin           	Zoeken
+5B  15B	 	u	0.17	LWin          
