@@ -1,4 +1,4 @@
-﻿;v1.2-failed
+﻿;v1.3
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 #InstallKeybdHook
 ; #Warn  ; Enable warnings to assist with detecting common errors.
@@ -11,8 +11,10 @@ if (master_mute = "Off") {
 } else {
     Menu, Tray, Icon, Icons/microphone-slash-solid-color.ico, , 1
 }
-; updateMicColor(master_mute)
-;micColor := MicColor.New()
+
+micColor := MicColor.New()
+micColor.update(master_mute)
+
 return
 
 ^!`:: ;ctrl+alt+` ;<s> Shift Pause Break button is my chosen hotkey </s>
@@ -32,7 +34,8 @@ if (master_mute = "Off") {
 }
 ;ToolTip, Mute %master_mute% ;use a tool tip at mouse pointer to show what state mic is after toggle
 SetTimer, RemoveToolTip, 1000
-; updateMicColor(master_mute)
+micColor.update(master_mute)
+
 return
 
 RemoveToolTip:
@@ -40,69 +43,17 @@ RemoveToolTip:
     ToolTip
 return
 
-
-
 class MicColor
 {
- /*   class httpResponse
-    {
-        
-        httpStatusCode[]
-        {
-            get {
-                return this.httpStatusCode
-            }
-            set {
-                return this.bar := value
-            }
-        }
-        
-        httpCookie[]
-        {
-            get {
-                return this.httpStatusCode
-            }
-            set {
-                return this.bar := value
-            }
-        }
-
-        httpCookieExpire[]
-        {
-            get {
-                return this.httpStatusCode
-            }
-            set {
-                return this.bar := value
-            }
-        }
-        
-        New(res)
-        {
-            this.httpStatusCode := res.status
-            this.httpCookie := res.GetResponseHeader("Set-Cookie: ", cookie)
-            this.httpCookieExpire := DateParse(StrSplit(this.httpCookie, ";")[1])
-            
-            Gui, Add, Edit, w800 r10, %  "cookie expire: "  this.httpCookieExpire
-            gui, show
-        }
-        
-    }
-    */
-
+    httpCookie := ""
+    httpCookieExpire := ""
+    
     New()
     {
-        try {
-            this.login()
-        } catch e {
-            ; httpResponse.New()
-            Gui, Add, Edit, w800 r10, %  "Error line "  e.Line " what: " e.What " Message given: " e.Message
-            gui, show
-            return
-        }
-        this.httpCookie := oHTTP.GetResponseHeader("Set-Cookie: ", cookie)
+        this.login()
+        
+        MsgBox, , , % this.httpCookieExpire "   " ;TimeFormat(this.httpCookieExpire, "yyyy-dd-MM HH:mm:ss")
     }
-    
     
     update(master_mute)
     {
@@ -113,17 +64,19 @@ class MicColor
             micColor := "#FFFF0000"
         }
         
+        
+        
+        
         try {
-            ;logRes := this.login()
-            res2 := this.sendMicColorUpdate(micColor, httpCookie)
-            ;  MsgBox, , % res2.status, % res2.GetLastError
+            ; logRes := this.login()
         } catch e {
-            MsgBox, , "Error", % "Error at line " e.Line ", with message: " e.Message
+            return
         }
+        
+        ; res2 := this.sendMicColorUpdate(micColor, httpCookie)
+        
         return
     }
-    
-    
     
     login()
     {
@@ -133,37 +86,43 @@ class MicColor
         oHTTP := ComObjCreate("WinHttp.WinHttpRequest.5.1")
         ;oHTTP.SetProxy(2, "localhost:8888"); debugging
         oHTTP.Option(6) := False
-        ;Post request
         oHTTP.Open("POST", URL, false)
-        
-        ;Add User-Agent header
         oHTTP.SetRequestHeader("User-Agent", "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)")
-        ;Add Referer header
         oHTTP.SetRequestHeader("Referer", URL)
-        ;Add Content-Type
         oHTTP.SetRequestHeader("Content-Type", "application/x-www-form-urlencoded")
-        ;Send POST request
         
         try {
             oHTTP.Send(PostData)
+            this.httpCookie := oHTTP.GetResponseHeader("Set-Cookie: ", cookie)
+            
+            
+            ;FormatTime, CurrentDate, %A_NowUTC%,, yyyyMMddHHmmss ;GMT 00:00
+            Now := %A_Now%
+            FormatTime, CurrentDate, Now ;, %A_NowUTC%             TomorrowsDate := CurrentDate
+            EnvAdd, CurrentDate, 0, Seconds
+            EnvSub, CurrentDate, 19700101, Seconds
+
+            FormatTime, TomorrowsDate, Now
+            EnvAdd, TomorrowsDate, 0, Seconds
+            EnvAdd, TomorrowsDate, 1, Days
+            EnvSub, TomorrowsDate, 19700101, Seconds
+            
+            ; EnvAdd, CurrentDate, 4, Hours ;GMT +04:00
+            ;MsgBox, % CurrentDate " " TomorrowsDate
+            
+            currentEpoch := EnvSub, A_NowUTC, 1970, seconds
+            this.httpCookieExpire := TomorrowsDate
+            
+            ; DateParse(StrDelLeft(StrSplit(this.httpCookie, ";")[2], 9))
+            ; MsgBox, , % oHTTP2.status, % this.httpCookie
+            ; MsgBox, , % oHTTP2.status, % this.httpCookieExpire
         } catch e {
-            ; oHTTP.status := 408
-            Gui, Add, Edit, w800 r1, %  e.Message
-            ; Gui, Add, Edit, w800 r1, %  oHTTP.status
-            gui, show
-            ;TrayTip, % "Error line "  e.Line, % e.Message
-            return oHTTP
+            MsgBox, , "error"
+            return
         }
         
-        ; MsgBox, , , % oHTTP.GetLastError()
-        ;  MsgBox, , % oHTTP.status, % httpCookie
-        return oHTTP
+        return
     }
-    
-    
-    ; 0x80072EE2 - timeout
-    ; 0x8000000A - data not available
-    
     
     
     send(micColor, httpCookie)
@@ -175,23 +134,49 @@ class MicColor
         
         oHTTP2 := ComObjCreate("WinHttp.WinHttpRequest.5.1")
         ;oHTTP2.SetProxy(2, "localhost:63025") ; debugging purpose
-        ;Post request
         oHTTP2.Open("POST", URL2, False)
-        ;Add User-Agent header
         oHTTP2.SetRequestHeader("User-Agent", "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)")
-        ;Add Referer header
         oHTTP2.SetRequestHeader("Referer", URL2)
-        ;Add Content-Type
         oHTTP2.SetRequestHeader("Content-Type", "application/x-www-form-urlencoded")
         
         oHTTP2.SetRequestHeader("cookie", httpCookie)
-        ;Send POST request
         
         oHTTP2.Send(PostData2)
         ;  MsgBox, , , % oHTTP2.GetLastError()
-        MsgBox, , % oHTTP2.status, % httpCookie
+        ; MsgBox, , % oHTTP2.status, % httpCookie
         Gui, Add, Edit, w800 r10, % oHTTP2.GetAllResponseHeaders() httpCookie
         gui, show
         return oHTTP2
     }
+}
+
+TimeFormat(timestamp, format)
+{
+    ;yyyy-dd-MM HH:mm:ss
+    FormatTime, formatted, timestamp, % format
+    return formatted
+}
+
+StrDelLeft(str, charCount)
+{
+    StringTrimLeft, output, str, charCount
+    return output
+}
+
+DateParse(str)
+{
+    static e2 = "i)(?:(\d{1, 2}+)[\s\.\-\/, ]+)?(\d{1, 2}|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\w*)[\s\.\-\/, ]+(\d{2, 4})"
+    str := RegExReplace(str, "((?:" . SubStr(e2, 42, 47) . ")\w*)(\s*)(\d{1, 2})\b", "$3$2$1", "", 1)
+    if RegExMatch(str, "i)^\s*(?:(\d{4})([\s\-:\/])(\d{1, 2})\2(\d{1, 2}))?"
+    . "(?:\s*[T\s](\d{1, 2})([\s\-:\/])(\d{1, 2})(?:\6(\d{1, 2})\s*(?:(Z)|(\+|\-)?"
+    . "(\d{1, 2})\6(\d{1, 2})(?:\6(\d{1, 2}))?)?)?)?\s*$", i)
+    d3 := i1, d2 := i3, d1 := i4, t1 := i5, t2 := i7, t3 := i8
+    Else If !RegExMatch(str, "^\W*(\d{1, 2}+)(\d{2})\W*$", t)
+    RegExMatch(str, "i)(\d{1, 2})\s*:\s*(\d{1, 2})(?:\s*(\d{1, 2}))?(?:\s*([ap]m))?", t)
+    , RegExMatch(str, e2, d)
+    f = %A_FormatFloat%
+    SetFormat, Float, 02.0
+    d := (d3 ? (StrLen(d3) = 2 ? 20 : "") . d3 : A_YYYY)((d2 := d2 + 0 ? d2 : (InStr(e2, SubStr(d2, 1, 3)) - 40) // 4 + 1.0) > 0 ? d2 + 0.0 : A_MM)((d1 += 0.0) ? d1 : A_DD) . t1 + (t1 = 12 ? t4 = "am" ? -12.0 : 0.0 : t4 = "am" ? 0.0 : 12.0) t2 + 0.0 . t3 + 0.0
+    SetFormat, Float, % f
+    Return, d
 }
