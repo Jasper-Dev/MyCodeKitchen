@@ -1,4 +1,12 @@
-﻿;v1.5
+﻿;v1.5.1
+
+;
+; TODO v1.6: 
+; - change micId variable to MIC_ID constant
+; - change audioCable variable to VIRTUAL_CABLE_ID constant
+; - make MIC_ID and VIRTUAL_CABLE_ID constants configurable via tray icon
+;
+
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 #InstallKeybdHook
 ; #Warn  ; Enable warnings to assist with detecting common errors.
