@@ -1,0 +1,279 @@
+| Key | SC Code | ASCII | Description | Duration (ms) |
+| --- | ------- | ----- | ----------- | ------------- |
+| ` | 029 | 41 | backtick | 112 |
+| `~ | 029 | 41 | tilde | 128 |
+| right shift | 036 | 54 | right shift | 392 |
+| `~ | 029 | 41 | tilde | 112 |
+| right shift | 036 | 54 | right shift | 321 |
+| ctrl | 01D | 29 | ctrl | 192 |
+| `~ | 029 | 41 | tilde | 151 |
+| shift | 02A | 42 | shift | 784 |
+| `~ | 029 | 41 | tilde | 160 |
+| right shift | 036 | 54 | right shift | 472 |
+| shift | 02A | 42 | shift | 624 |
+| ` | 029 | 41 | backtick | 112 |
+| right shift | 036 | 54 | right shift | 152 |
+| shift | 02A | 42 | shift | 208 |
+| right ctrl | 01D | 29 | right ctrl | 144 |
+| ctrl | 01D | 29 | ctrl | 248 |
+| menu | 05D | 93 | menu | 80 |
+| menu | 05D | 93 | menu | 152 |
+| left windows | 05B | 91 | left windows | 80 |
+| left windows | 05B | 91 | left windows | 95 |
+| alt | 038 | 56 | alt | 151 |
+| alt gr | 21D | N/A | alt gr | 112 |
+| shift | 02A | 42 | shift | 112 |
+| \ | 056 | 86 | backslash | 88 |
+| z | 02C | 44 | z | 184 |
+| | | 056 | 86 | pipe | 112 |
+| right shift | 036 | 54 | right shift | 280 |
+| | | 02B | 43 | pipe | 144 |
+| right shift | 036 | 54 | right shift | 336 |
+| \ | 02B | 43 | backslash | 160 |
+| " | 028 | 40 | double quote | 160 |
+| right shift | 036 | 54 | right shift | 424 |
+| "' | 028 | 40 | single quote | 120 |
+| : | 027 | 39 | colon | 119 |
+| right shift | 036 | 54 | right shift | 337 |
+| l | 026 | 38 | l | 144 |
+| : | 027 | 39 | colon | 119 |
+| right shift | 036 | 54 | right shift | 496 |
+| l | 026 | 38 | l | 168 |
+| k | 025 | 37 | k | 176 |
+| f | 021 | 33 | f | 144 |
+| d | 020 | 32 | d | 231 |
+| s | 01F | 31 | s | 88 |
+| j | 024 | 36 | j | 272 |
+| k | 025 | 37 | k | 182 |
+| a | 01E | 30 | a | 278 |
+| l | 026 | 38 | l | 232 |
+| f | 021 | 33 | f | 271 |
+| ; | 027 | 39 | semicolon | 235 |
+| 8 | 009 | 9 | 8 | 163 |
+| i | 017 | 23 | i | 164 |
+| o | 018 | 24 | o | 92 |
+| ; | 027 | 39 | semicolon | 177 |
+| 2 | 003 | 3 | 2 | 88 |
+| 8 | 009 | 9 | 8 | 272 |
+| 4 | 005 | 5 | 4 | 152 |
+| 0 | 00B | 11 | 0 | 225 |
+| [ | 01A | 26 | left square bracket | 185 |
+| 1 | 002 | 2 | 1 | 241 |
+| 9 | 00A | 10 | 9 | 121 |
+| 8 | 009 | 9 | 8 | 121 |
+| 0 | 00B | 11 | 0 | 83 |
+| - | 00C | 12 | minus | 122 |
+| 1 | 002 | 2 | 1 | 118 |
+| 9 | 00A | 10 | 9 | 88 |
+| - | 00C | 12 | minus | 168 |
+| ` | 029 | 41 | backtick | 264 |
+| backspace | 00E | 14 | backspace | 248 |
+| 2 | 003 | 3 | 2 | 161 |
+| ` | 029 | 41 | backtick | 182 |
+| 2 | 003 | 3 | 2 | 152 |
+| = | 00D | 13 | equals | 256 |
+| 4 | 005 | 5 | 4 | 232 |
+| backspace | 00E | 14 | backspace | 214 |
+| 4 | 005 | 5 | 4 | 168 |
+| 2 | 003 | 3 | 2 | 184 |
+| backspace | 00E | 14 | backspace | 177 |
+| 4 | 005 | 5 | 4 | 136 |
+| 0 | 00B | 11 | 0 | 88 |
+| = | 00D | 13 | equals | 142 |
+| 1 | 002 | 2 | 1 | 191 |
+| backspace | 00E | 14 | backspace | 225 |
+| 8 | 009 | 9 | 8 | 112 |
+| 4 | 005 | 5 | 4 | 159 |
+| 0 | 00B | 11 | 0 | 171 |
+| - | 00C | 12 | minus | 97 |
+| 3 | 004 | 4 | 3 | 99 |
+| ` | 029 | 41 | backtick | 195 |
+| 4 | 005 | 5 | 4 | 156 |
+| 9 | 00A | 10 | 9 | 184 |
+| - | 00C | 12 | minus | 184 |
+| 3 | 004 | 4 | 3 | 190 |
+| 8 | 009 | 9 | 8 | 83 |
+| 7 | 008 | 8 | 7 | 83 |
+| ` | 029 | 41 | backtick | 224 |
+| 4 | 005 | 5 | 4 | 169 |
+| 9 | 00A | 10 | 9 | 160 |
+| - | 00C | 12 | minus | 208 |
+| backspace | 00E | 14 | backspace | 883 |
+| 3 | 004 | 4 | 3 | 167 |
+| 2 | 003 | 3 | 2 | 111 |
+| 1 | 002 | 2 | 1 | 112 |
+| 8 | 009 | 9 | 8 | 155 |
+| 0 | 00B | 11 | 0 | 83 |
+| ` | 029 | 41 | backtick | 149 |
+| 4 | 005 | 5 | 4 | 90 |
+| = | 00D | 13 | equals | 137 |
+| 3 | 004 | 4 | 3 | 94 |
+| 1 | 002 | 2 | 1 | 148 |
+| tab | 00F | 15 | tab | 21 |
+| r | 013 | 19 | r | 80 |
+| enter | 01C | 28 | enter | 310 |
+| I | 017 | 23 | I | 159 |
+| p | 019 | 25 | p | 96 |
+| a | 01E | 30 | a | 32 |
+| caps lock | 03A | 58 | caps lock | 581 |
+| f | 021 | 33 | f | 144 |
+| | | 02B | 43 | pipe | 56 |
+| right shift | 036 | 54 | right shift | 517 |
+| shift | 02A | 42 | shift | 256 |
+| right shift | 036 | 54 | right shift | 136 |
+| \ | 02B | 43 | backslash | 208 |
+| caps lock | 03A | 58 | caps lock | 272 |
+| right shift | 036 | 54 | right shift | 14 |
+| right ctrl | 01D | 29 | right ctrl | 24 |
+| enter | 01C | 28 | enter | 35 |
+| enter | 01C | 28 | enter | 8 |
+| caps lock | 03A | 58 | caps lock | 144 |
+| ; | 027 | 39 | semicolon | 144 |
+| ctrl | 01D | 29 | ctrl | 232 |
+| right ctrl | 01D | 29 | right ctrl | 248 |
+| M | 032 | 50 | M | 104 |
+| , | 033 | 51 | comma | 88 |
+| . | 034 | 52 | period | 128 |
+| / | 035 | 53 | forward slash | 98 |
+| space | 039 | 57 | space | 223 |
+| alt | 038 | 56 | alt | 56 |
+| menu | 05D | 93 | menu | 222 |
+| . | 034 | 52 | period | 132 |
+| left windows | 05B | 91 | left windows | 408 |
+| C | 02E | 46 | C | 153 |
+| M | 032 | 50 | M | 42 |
+| N | 031 | 49 | N | 43 |
+| L | 026 | 38 | L | 128 |
+| a | 01E | 30 | a | 159 |
+| : | 027 | 39 | colon | 152 |
+| shift | 02A | 42 | shift | 145 |
+| right shift | 036 | 54 | right shift | 187 |
+| J | 024 | 36 | J | 128 |
+| F | 021 | 33 | F | 198 |
+| O | 018 | 24 | O | 190 |
+| Q | 010 | 16 | Q | 135 |
+| caps lock | 03A | 58 | caps lock | 110 |
+| right shift | 036 | 54 | right shift | 198 |
+| \ | 02B | 43 | backslash | 207 |
+| f | 021 | 33 | f | 36 |
+| O | 018 | 24 | O | 126 |
+| Q | 010 | 16 | Q | 64 |
+| | | 02B | 43 | pipe | 158 |
+| right shift | 036 | 54 | right shift | 184 |
+| f | 021 | 33 | f | 184 |
+| e | 012 | 18 | e | 144 |
+| s | 01F | 31 | s | 134 |
+| a | 01E | 30 | a | 208 |
+| l | 026 | 38 | l | 96 |
+| F | 021 | 33 | F | 254 |
+| right shift | 036 | 54 | right shift | 328 |
+| e | 012 | 18 | e | 260 |
+| w | 011 | 17 | w | 189 |
+| a | 01E | 30 | a | 240 |
+| F | 021 | 33 | F | 225 |
+| " | 028 | 40 | double quote | 188 |
+| E | 012 | 18 | E | 82 |
+| right shift | 036 | 54 | right shift | 254 |
+| j | 024 | 36 | j | 176 |
+| w | 011 | 17 | w | 152 |
+| a | 01E | 30 | a | 204 |
+| O | 018 | 24 | O | 182 |
+| : | 027 | 39 | colon | 168 |
+| F | 021 | 33 | F | 168 |
+| right shift | 036 | 54 | right shift | 440 |
+| s | 01F | 31 | s | 101 |
+| ctrl | 01D | 29 | ctrl | 18 |
+| ; | 027 | 39 | semicolon | 128 |
+| left windows | 05B | 91 | left windows | 512 |
+| a | 01E | 30 | a | 136 |
+| l | 026 | 38 | l | 104 |
+| r | 013 | 19 | r | 80 |
+| i | 017 | 23 | i | 80 |
+| g | 022 | 34 | g | 62 |
+| h | 023 | 35 | h | 80 |
+| t | 014 | 20 | t | 71 |
+| space | 039 | 57 | space | 120 |
+| e | 012 | 18 | e | 72 |
+| v | 02F | 47 | v | 80 |
+| e | 012 | 18 | e | 112 |
+| r | 013 | 19 | r | 128 |
+| y | 015 | 21 | y | 88 |
+| t | 014 | 20 | t | 72 |
+| h | 023 | 35 | h | 84 |
+| i | 017 | 23 | i | 88 |
+| n | 031 | 49 | n | 96 |
+| g | 022 | 34 | g | 65 |
+| space | 039 | 57 | space | 112 |
+| o | 018 | 24 | o | 72 |
+| w | 011 | 17 | w | 102 |
+| backspace | 00E | 14 | backspace | 56 |
+| backspace | 00E | 14 | backspace | 72 |
+| w | 011 | 17 | w | 136 |
+| o | 018 | 24 | o | 104 |
+| r | 013 | 19 | r | 105 |
+| k | 025 | 37 | k | 89 |
+| s | 01F | 31 | s | 104 |
+| space | 039 | 57 | space | 134 |
+| n | 031 | 49 | n | 72 |
+| o | 018 | 24 | o | 128 |
+| w | 011 | 17 | w | 96 |
+| backspace | 00E | 14 | backspace | 41 |
+| w | 011 | 17 | w | 120 |
+| , | 033 | 51 | comma | 88 |
+| space | 039 | 57 | space | 104 |
+| e | 012 | 18 | e | 96 |
+| x | 02D | 45 | x | 104 |
+| c | 02E | 46 | c | 72 |
+| e | 012 | 18 | e | 88 |
+| t | 014 | 20 | t | 128 |
+| backspace | 00E | 14 | backspace | 64 |
+| p | 019 | 25 | p | 120 |
+| t | 014 | 20 | t | 69 |
+| space | 039 | 57 | space | 128 |
+| f | 021 | 33 | f | 53 |
+| o | 018 | 24 | o | 79 |
+| r | 013 | 19 | r | 69 |
+| space | 039 | 57 | space | 88 |
+| t | 014 | 20 | t | 54 |
+| h | 023 | 35 | h | 80 |
+| e | 012 | 18 | e | 88 |
+| space | 039 | 57 | space | 110 |
+| c | 02E | 46 | c | 152 |
+| ctrl | 01D | 29 | ctrl | 624 |
+| v | 02F | 47 | v | 144 |
+| ctrl | 01D | 29 | ctrl | 616 |
+| "' | 028 | 40 | single quote | 184 |
+| space | 039 | 57 | space | 295 |
+| "' | 028 | 40 | single quote | 184 |
+| space | 039 | 57 | space | 196 |
+| "' | 028 | 40 | single quote | 177 |
+| space | 039 | 57 | space | 232 |
+| enter | 01C | 28 | enter | 64 |
+| space | 039 | 57 | space | 129 |
+| space | 039 | 57 | space | 144 |
+| space | 039 | 57 | space | 96 |
+| ` | 029 | 41 | backtick | 121 |
+| ` | 029 | 41 | backtick | 79 |
+| `~ | 029 | 41 | tilde | 103 |
+| `~ | 029 | 41 | tilde | 105 |
+| shift | 02A | 42 | shift | 601 |
+| c | 02E | 46 | c | 144 |
+| o | 018 | 24 | o | 176 |
+| n | 031 | 49 | n | 111 |
+| t | 014 | 20 | t | 104 |
+| i | 017 | 23 | i | 119 |
+| n | 031 | 49 | n | 72 |
+| u | 016 | 22 | u | 112 |
+| e | 012 | 18 | e | 93 |
+| enter | 01C | 28 | enter | 95 |
+| a | 01E | 30 | a | 128 |
+| v | 02F | 47 | v | 216 |
+| ctrl | 01D | 29 | ctrl | 1425 |
+| v | 02F | 47 | v | 112 |
+| ctrl | 01D | 29 | ctrl | 288 |
+| s | 01F | 31 | s | 144 |
+| ctrl | 01D | 29 | ctrl | 247 |
+| s | 01F | 31 | s | 144 |
+| ctrl | 01D | 29 | ctrl | 384 |
+| ctrl | 01D | 29 | ctrl | 512 |
+| c | 02E | 46 | c | 146 |

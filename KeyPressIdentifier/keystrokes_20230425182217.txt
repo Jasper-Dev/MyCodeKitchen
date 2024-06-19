@@ -1,0 +1,22 @@
+| Key | SC Code | ASCII | Description | Duration (ms) |
+| --- | ------- | ----- | ----------- | ------------- |
+| ` | 029 | 41 | backtick | 97 |
+| shift | 02A | 42 | shift | 288 |
+| ` | 029 | 41 | backtick | 153 |
+| ` | 029 | 41 | backtick | 160 |
+| `\~ | 029 | 41 | `~ | 136 |
+| `\~ | 029 | 41 | `~ | 113 |
+| `\~ | 029 | 41 | `~ | 56 |
+| shift | 02A | 42 | shift | 1040 |
+| c | 02E | 46 | c | 73 |
+| c | 02E | 46 | c | 72 |
+| c | 02E | 46 | c | 80 |
+| ctrl | 01D | 29 | ctrl | 533 |
+| right\ ctrl | 01D | 29 | right ctrl | 534 |
+| v | 02F | 47 | v | 145 |
+| ctrl | 01D | 29 | ctrl | 344 |
+| enter | 01C | 28 | enter | 64 |
+| a | 01E | 30 | a | 152 |
+| v | 02F | 47 | v | 112 |
+| s | 01F | 31 | s | 120 |
+| ctrl | 01D | 29 | ctrl | 936 |

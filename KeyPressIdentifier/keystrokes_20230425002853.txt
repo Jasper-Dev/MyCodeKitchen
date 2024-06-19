@@ -1,0 +1,106 @@
+| Key | SC Code | Description | Duration (ms) |
+| --- | ------- | ----------- | ------------- |
+| q | 010 | q | 200 |
+| w | 011 | w | 152 |
+| e | 012 | e | 120 |
+| r | 013 | r | 152 |
+| t | 014 | t | 128 |
+| y | 015 | y | 120 |
+| u | 016 | u | 161 |
+| i | 017 | i | 128 |
+| p | 019 | p | 48 |
+| o | 018 | o | 111 |
+| space | 039 | space | 168 |
+| enter | 01C | enter | 136 |
+| backspace | 00E | backspace | 144 |
+| right shift | 036 | right shift | 136 |
+| right ctrl | 01D | right ctrl | 152 |
+| menu | 05D | menu | 120 |
+| alt gr | 21D | alt gr | 120 |
+| alt | 038 | alt | 136 |
+| alt | 038 | alt | 176 |
+| ctrl | 01D | ctrl | 185 |
+| left windows | 05B | left windows | 136 |
+| left windows | 05B | left windows | 144 |
+| shift | 02A | shift | 168 |
+| x | 02D | x | 184 |
+| a | 01E | a | 216 |
+| d | 020 | d | 232 |
+| caps lock | 03A | caps lock | 168 |
+| tab | 00F | tab | 160 |
+| caps lock | 03A | caps lock | 168 |
+| f1 | 03B | f1 | 104 |
+| esc | 001 | esc | 112 |
+| f2 | 03C | f2 | 112 |
+| f3 | 03D | f3 | 104 |
+| f4 | 03E | f4 | 144 |
+| f5 | 03F | f5 | 153 |
+| f5 | 03F | f5 | 56 |
+| f6 | 040 | f6 | 128 |
+| f7 | 041 | f7 | 128 |
+| f8 | 042 | f8 | 112 |
+| f9 | 043 | f9 | 112 |
+| f10 | 044 | f10 | 168 |
+| f11 | 057 | f11 | 81 |
+| f10 | 044 | f10 | 120 |
+| f11 | 057 | f11 | 135 |
+| f12 | 058 | f12 | 97 |
+| print screen | 037 | print screen | 151 |
+| print screen | 037 | print screen | 176 |
+| num lock | 045 | num lock | 0 |
+| esc | 001 | esc | 136 |
+| scroll lock | 046 | scroll lock | 144 |
+| pause | 045 | pause | 159 |
+| scroll lock | 046 | scroll lock | 136 |
+| num lock | 045 | num lock | 160 |
+| insert | 052 | insert | 136 |
+| home | 047 | home | 160 |
+| page up | 049 | page up | 159 |
+| delete | 053 | delete | 192 |
+| end | 04F | end | 145 |
+| page down | 051 | page down | 176 |
+| up | 048 | up | 200 |
+| down | 050 | down | 128 |
+| left | 04B | left | 160 |
+| right | 04D | right | 199 |
+| insert | 052 | insert | 176 |
+| delete | 053 | delete | 120 |
+| enter | 01C | enter | 136 |
+| end | 04F | end | 184 |
+| down | 050 | down | 136 |
+| page down | 051 | page down | 144 |
+| left | 04B | left | 184 |
+| clear | 04C | clear | 192 |
+| right | 04D | right | 272 |
+| + | 04E | + | 184 |
+| home | 047 | home | 159 |
+| up | 048 | up | 177 |
+| page up | 049 | page up | 240 |
+| + | 04E | + | 160 |
+| num lock | 045 | num lock | 248 |
+| / | 035 | / | 192 |
+| * | 037 | * | 217 |
+| - | 04A | - | 176 |
+| num lock | 045 | num lock | 96 |
+| num lock | 045 | num lock | 128 |
+| 0 | 052 | 0 | 240 |
+| decimal | 053 | decimal | 175 |
+| enter | 01C | enter | 144 |
+| 1 | 04F | 1 | 192 |
+| 2 | 050 | 2 | 183 |
+| 3 | 051 | 3 | 223 |
+| enter | 01C | enter | 88 |
+| 4 | 04B | 4 | 225 |
+| 5 | 04C | 5 | 272 |
+| 6 | 04D | 6 | 152 |
+| + | 04E | + | 160 |
+| 7 | 047 | 7 | 192 |
+| 8 | 048 | 8 | 272 |
+| 9 | 049 | 9 | 192 |
+| + | 04E | + | 151 |
+| / | 035 | / | 176 |
+| * | 037 | * | 208 |
+| - | 04A | - | 143 |
+| up | 048 | up | 152 |
+| down | 050 | down | 144 |
+| enter | 01C | enter | 144 |

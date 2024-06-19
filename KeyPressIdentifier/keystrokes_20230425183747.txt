@@ -1,0 +1,2 @@
+| Key | SC Code | ASCII | Description | Duration (ms) |
+| --- | ------- | ----- | ----------- | ------------- |
