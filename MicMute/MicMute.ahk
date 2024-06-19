@@ -1,10 +1,14 @@
-﻿;v1.5.1
+﻿;v1.5.2
+; - Changed micId and audioCable to match with id's on PC
 
 ;
 ; TODO v1.6: 
-; - change micId variable to MIC_ID constant
-; - change audioCable variable to VIRTUAL_CABLE_ID constant
-; - make MIC_ID and VIRTUAL_CABLE_ID constants configurable via tray icon
+; - change micId variable to MIC_ID variable
+; - change audioCable variable to VIRTUAL_CABLE_ID variable
+; - make MIC_ID and VIRTUAL_CABLE_ID variables configurable via tray icon
+; - open sound control panel via tray menu
+; - figure out a way to keep the mic ID up to date
+; - Have the callout in an async method to avoid program hang on quick unmute/mute action
 ;
 
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
@@ -13,8 +17,8 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
-micId := 5
-audioCable := 9
+micId := 7
+audioCable := 8
 
 SoundGet, master_mute, , mute, micId
 if (master_mute = "Off") {
@@ -46,7 +50,7 @@ if (master_mute = "Off") {
 ;ToolTip, Mute %master_mute% ;use a tool tip at mouse pointer to show what state mic is after toggle
 SetTimer, RemoveToolTip, 1000
 
-micColor.update(master_mute)
+;micColor.update(master_mute)
 return
 
 RemoveToolTip:
