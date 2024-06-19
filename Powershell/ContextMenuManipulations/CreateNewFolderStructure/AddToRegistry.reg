@@ -1,0 +1,8 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\CreateFolderStructure]
+@="Create Project Folder Structure"
+"Icon"="powershell.exe"
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\CreateFolderStructure\command]
+@="powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"C:\Autohotkey\Powershell\ContextMenuManipulations\CreateNewFolderStructure\folderstructure.ps1\""
