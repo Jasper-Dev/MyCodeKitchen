@@ -1,0 +1,3 @@
+[submodule "Python/nway-compare"]
+	path = Python/nway-compare
+	url = https://github.com/Jasper-Dev/nway-compare
